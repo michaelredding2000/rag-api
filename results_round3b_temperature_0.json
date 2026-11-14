@@ -1,0 +1,112 @@
+[
+  {
+    "number": 1,
+    "question": "What was the median subsidy dependence?",
+    "expected": "63.8%",
+    "answer": "The median subsidy dependence for public universities is ~34%.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 2,
+    "question": "How many schools rely on subsidies for more than half their athletic money?",
+    "expected": "151 of 236",
+    "answer": "To answer this question, I'll need to analyze the data provided in the context and the NCAA subsidy analysis.\n\n### Context Analysis\nThe context states that 151 of the 236 schools with reported data rely on subsidies for over half their athletic money. This directly answers the first part of the question.\n\n### NCAA Subsidy Analysis\nThe NCAA subsidy analysis shows that the average subsidy dependence by group varies by subdivision and conference. Here's the breakdown:\n\n- **Subdivision: FBS (Federally Funded Schools)**\n  - Average subsidy dependence: ~34%\n  - Average subsidy dependence: ~68%\n  - Average subsidy dependence: ~76%\n\n- **Subdivision: FCS (Federally Co-sponsored Schools)**\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~12%\n  - Average subsidy dependence: ~13%\n\n- **Conference: Southeastern (SEC)**\n  - Average subsidy dependence: ~4%\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~12%\n\n- **Conference: Big Ten**\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~12%\n  - Average subsidy dependence: ~13%\n\n- **Conference: Atlantic Coast (ACC)**\n  - Average subsidy dependence: ~12%\n  - Average subsidy dependence: ~13%\n  - Average subsidy dependence: ~61%\n\n- **Conference: Big 12**\n  - Average subsidy dependence: ~13%\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~12%\n\n- **Conference: Sun Belt**\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~61%\n\n- **Conference: Conference USA**\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~6%\n  - Average subsidy dependence: ~66%\n\n### Analysis\nThe context provides the average subsidy dependence for each group, but it doesn't explicitly state how many schools depend on subsidies for more than half their athletic funding. The NCAA subsidy analysis provides a more detailed breakdown by group.\n\n### Conclusion\nBased on the NCAA subsidy analysis, the schools that depend most on student fees and subsidies to fund athletics are:\n- **FBS (Federally Funded Schools)**: 151 schools\n- **FCS (Federally Co-sponsored Schools)**: 151 schools\n- **SEC**: 151 schools\n- **ACC**: 151 schools\n- **Big 12**: 151 schools\n- **Sun Belt**: 151 schools\n- **Conference USA**: 151 schools\n\nThe context doesn't provide a specific breakdown by subdivision or conference, so we can't determine how many schools depend on subsidies for more than half their athletic funding by subdivision or conference.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 3,
+    "question": "Which conference has the lowest average subsidy dependence?",
+    "expected": "SEC, about 4%",
+    "answer": "To answer this question, we need to analyze the data provided in the context and the information given in the question.\n\n### Context Analysis\nThe context states that the median school funds 63.8% of its athletic revenue through subsidies. More than half of the schools with reported data, 151 of 236, rely on subsidies for over half their athletic money.\n\n### Question Analysis\nThe question asks which conference has the lowest average subsidy dependence. The context does not provide specific information about the average subsidy dependence for each conference. However, we can infer that the context suggests that the average subsidy dependence is lower for power conferences compared to smaller conferences.\n\n### Conclusion\nBased on the information provided in the context, we cannot determine which conference has the lowest average subsidy dependence. The context only provides data for power conferences, but it does not give specific information about the average subsidy dependence for smaller conferences.\n\nTherefore, the answer to the question \"Which conference has the lowest average subsidy dependence? \" is that we do not have enough information from the given context to determine which conference has the lowest average subsidy dependence.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 4,
+    "question": "What is the average subsidy dependence for Mid-American conference schools?",
+    "expected": "About 66%",
+    "answer": "To answer the question, I'll need to analyze the given context and the data points provided. The context mentions that the median school funds 63.8% of its athletic revenue through subsidies. It also provides information about the average subsidy dependence by division and conference.\n\nThe context states that the average subsidy dependence by division is ~4% for Southeastern (SEC), ~6% for Big Ten, ~12% for Atlantic Coast (ACC), ~13% for Big 12, ~61% for Sun Belt, ~63% for Conference USA, ~66% for Mid-American, and ~68% for No Football.\n\nThe question asks for the average subsidy dependence for Mid-American conference schools. According to the context, the average subsidy dependence for Mid-American conference schools is ~68%.\n\nTherefore, the answer to the question \"What is the average subsidy dependence for Mid-American conference schools?\" is ~68%.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 5,
+    "question": "Where does the NCAA data come from?",
+    "expected": "Knight-Newhouse College Athletics Database, FY2024",
+    "answer": "The NCAA data comes from the Knight-Newhouse College Athletics Database, which is pulled through its Custom Reporting export.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 6,
+    "question": "What is the overall no-show rate?",
+    "expected": "20.19%",
+    "answer": "The overall no-show rate is 20.19%.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 7,
+    "question": "What is the no-show rate for same-day appointments?",
+    "expected": "4.65%",
+    "answer": "The no-show rate for same-day appointments is 22,319 out of 110,527.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 8,
+    "question": "Which age group has the highest no-show rate?",
+    "expected": "18-34, at 23.98%",
+    "answer": "The age group with the highest no-show rate is 18-34 years old. This can be seen in the \"Age Group is 18-34, Total is 24,246, No-Show Rate is 23.98%\" row.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 9,
+    "question": "Which neighbourhood has the highest no-show rate?",
+    "expected": "Santos Dumont, at 28.92%",
+    "answer": "Based on the information provided, the neighbourhood with the highest no-show rate is SANTOS DUMONT. The context states that the no-show rate for this neighbourhood is 28.92%.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 10,
+    "question": "How many students attend the University of Mary Washington?",
+    "expected": "The context does not say",
+    "answer": "To answer this question, I'll need to use the information provided in the context and the data from the NCAA subsidy report.\n\nThe context states that the University of Mary Washington is a 2023 Computer Science graduate from the University of Mary Washington, based in McLean, Virginia. This means that the university has a student body.\n\nThe NCAA subsidy report provides the total number of students attending the university, which is 2023. This number is based on the data from the Custom Reporting export, which is pulled through its Custom Reporting export.\n\nTherefore, the number of students attending the University of Mary Washington is 2023.",
+    "sources": [
+      "profile",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  }
+]

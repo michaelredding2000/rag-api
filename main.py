@@ -19,6 +19,15 @@ collection = client.get_or_create_collection(
     embedding_function=ef,
 )
 
+# Rules go in the system message so the model treats them as instructions, not context
+SYSTEM_PROMPT = """You answer questions using only the provided context.
+Rules:
+- Answer in one or two short sentences.
+- Copy numbers exactly as they appear in the context. Do not calculate anything.
+- Do not explain your reasoning.
+- Do not add any information that is not in the context.
+- If the answer is not in the context, reply exactly: I don't know based on the documents."""
+
 
 @app.get("/ask")
 def ask(question: str):
@@ -26,19 +35,21 @@ def ask(question: str):
     results = collection.query(query_texts=[question], n_results=3)
     context = "\n\n".join(results["documents"][0])
 
-    # AUGMENT the prompt with the retrieved context
-    augmented_prompt = f"""Use the following context to answer the question.
-If the context doesn't contain relevant information, say so.
-
-Context:
+    # AUGMENT: context first, question last, so the question is fresh when the model answers
+    user_prompt = f"""Context:
 {context}
 
-Question: {question}"""
+Question: {question}
+Answer:"""
 
-    # GENERATE the answer with the local model
+    # GENERATE with temperature 0 so results are repeatable
     response = ollama.chat(
         model="qwen2.5:0.5b",
-        messages=[{"role": "user", "content": augmented_prompt}],
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": user_prompt},
+        ],
+        options={"temperature": 0},
     )
 
     return {

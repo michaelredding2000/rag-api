@@ -1,0 +1,206 @@
+[Source: ncaa_subsidy_report]
+# NCAA Athletic Subsidy Analysis
+
+[Explore the live interactive dashboard](https://claude.ai/artifact/WoEp5Zd94yTpLMUDduxj1U)
+
+![NCAA subsidy dashboard](dashboard.png)
+
+Most public Division I athletic departments do not pay for themselves. Across 240 public D-I schools in FY2024, the typical school covered only about a third of its athletic revenue with money it earned, and the rest came from student fees and institutional or government support. 151 of the 236 schools with reported financials leaned on subsidies for more than half their athletic funding.
+
+==========
+
+[Source: ncaa_subsidy_report]
+## The question
+
+Which public universities depend most on student fees and subsidies to fund athletics, and how does that dependence vary by subdivision and conference?
+
+==========
+
+[Source: ncaa_subsidy_report]
+## Data
+
+Knight-Newhouse College Athletics Database, pulled through its Custom Reporting export. The set covers 240 public Division I schools for fiscal year 2024, with all dollar figures inflation-adjusted. Four schools have no reported financial figures and are left out of the calculations. Each row is one school-year. Fields include total revenues, media and conference revenue, ticket sales, institutional or government support, and student fees, along with the school's NCAA subdivision and FBS conference.
+
+==========
+
+[Source: ncaa_subsidy_report]
+## Method
+
+The analysis runs in Python with pandas. The script (`analyze_ncaa.py`) reads the Knight-Newhouse export and renames the raw columns to readable names. From those it builds the fields the question needs:
+
+- `subsidy`: institutional or government support plus student fees
+- `subsidy_pct`: subsidy divided by total revenues
+- `student_fee_pct`: student fees divided by total revenues
+- `earned_revenue`: total revenues minus subsidy
+
+Subsidy dependence is the share of athletic revenue that comes from money the department did not earn. Earned revenue is what is left once that support is removed. The script writes `ncaa_analyzed.csv`, which feeds a Power BI dashboard and the interactive dashboard.
+
+==========
+
+[Source: ncaa_subsidy_report]
+## Findings
+
+The median school funds 63.8% of its athletic revenue through subsidies. More than half the schools with reported data, 151 of 236, rely on subsidies for over half their athletic money.
+
+Dependence tracks closely with subdivision. Average subsidy dependence by group:
+
+Row: Subdivision is FBS, Average subsidy dependence is ~34%.
+Row: Subdivision is FCS, Average subsidy dependence is ~68%.
+Row: Subdivision is No Football, Average subsidy dependence is ~76%.
+
+Conference tells the same story inside FBS. A short list of power conferences fund athletics almost entirely on their own, while the smaller conferences lean heavily on subsidies. Average subsidy dependence:
+
+Row: Conference is Southeastern (SEC), Average subsidy dependence is ~4%.
+Row: Conference is Big Ten, Average subsidy dependence is ~6%.
+Row: Conference is Atlantic Coast (ACC), Average subsidy dependence is ~12%.
+Row: Conference is Big 12, Average subsidy dependence is ~13%.
+Row: Conference is Sun Belt, Average subsidy dependence is ~61%.
+Row: Conference is Conference USA, Average subsidy dependence is ~63%.
+Row: Conference is Mid-American, Average subsidy dependence is ~66%.
+
+==========
+
+[Source: ncaa_subsidy_report]
+## What it means
+
+The data points to one driver: whether a school has a media and ticket business big enough to carry the department. A handful of big-brand programs in the power conferences bring in enough television and gate revenue to run near break-even without touching student money. Everyone else backfills the gap with fees and institutional support, and the smaller the earned-revenue base, the larger that backfill has to be.
+
+The scatter of earned revenue against subsidy dependence shows the relationship directly. Schools fall along an inverse curve. As earned revenue climbs, subsidy dependence drops toward zero, and the schools with almost no commercial athletic revenue sit near 80 to 90% dependence. For most public universities, athletics is not a business that funds itself. It is a service the campus pays to provide, and students cover a real part of the bill.
+
+==========
+
+[Source: ncaa_subsidy_report]
+## Interactive dashboard
+
+[Explore the live dashboard](https://claude.ai/artifact/WoEp5Zd94yTpLMUDduxj1U)
+
+I turned the analyzed CSV into an interactive dashboard using Claude Artifacts (React and Recharts). It adds division filters, a revenue source breakdown, conference and division comparisons, a scatter of earned revenue vs. subsidy, and a lookup for any school.
+
+How I used Claude: I gave Claude `ncaa_analyzed.csv` and iterated through follow-up prompts for layout, color, filters, and a dark mode toggle, keeping a prompt log of each step.
+
+What I verified: I checked every tile, chart, and note against this repo's Python results, and tested the school lookup on a normal case (George Mason) and a missing-data case (Temple). The University of Idaho is tagged Sun Belt in the source data but plays FCS football, so it is excluded from the dashboard's FBS conference chart.
+
+==========
+
+[Source: ncaa_subsidy_report]
+## Repo contents
+
+- `analyze_ncaa.py`: the pandas script that reads the raw export and writes the analyzed CSV
+- `ncaa_analyzed.csv`: the processed dataset that feeds both dashboards
+- `NCAA_Subsidies.pbix`: the Power BI dashboard
+- `dashboard.png`: screenshot of the Power BI dashboard
+
+The raw Knight-Newhouse export is not redistributed here. Pull it yourself from the source below.
+
+==========
+
+[Source: ncaa_subsidy_report]
+## Running it
+
+The analysis was built on a machine with no prior Python install, using uv to manage the environment:
+
+==========
+
+[Source: noshow_findings_report]
+# Findings Report — Patient No-Show Root-Cause Analysis
+
+Analyst: Mike Redding
+Dataset: Kaggle Medical Appointment No-Shows (110,527 rows)
+Date: March 2026
+
+==========
+
+[Source: noshow_findings_report]
+## Executive Summary
+
+Analysis of 110,527 medical appointments identified lead time and patient age as the primary drivers of no-show behavior, with a secondary SMS data quality issue surfaced during analysis. Appointments booked 15+ days in advance showed a no-show rate exceeding 32% — nearly 7x higher than same-day bookings — making lead time the strongest and most actionable predictor in the dataset.
+
+==========
+
+[Source: noshow_findings_report]
+## Key Findings
+
+==========
+
+[Source: noshow_findings_report]
+### Finding 1 — Overall No-Show Rate
+- 20.19% of all appointments resulted in a no-show (22,319 of 110,527)
+- Highest no-show day: Saturday (23.08%)
+- Lowest no-show day: Wednesday (19.69%)
+
+==========
+
+[Source: noshow_findings_report]
+### Finding 2 — Lead Time is the Strongest Predictor
+
+Row: Lead Time is Same day, Total Appts is 38,563, No-Show Rate is 4.65%.
+Row: Lead Time is 1-7 days, Total Appts is 32,185, No-Show Rate is 24.15%.
+Row: Lead Time is 8-14 days, Total Appts is 12,025, No-Show Rate is 30.47%.
+Row: Lead Time is 15-30 days, Total Appts is 17,371, No-Show Rate is 32.59%.
+Row: Lead Time is 30+ days, Total Appts is 10,378, No-Show Rate is 33.00%.
+
+Appointments booked 15+ days in advance are 7x more likely to result in a no-show than same-day bookings.
+
+==========
+
+[Source: noshow_findings_report]
+### Finding 3 — Age Group Breakdown
+
+Row: Age Group is 0-17, Total is 27,379, No-Show Rate is 21.90%.
+Row: Age Group is 18-34, Total is 24,246, No-Show Rate is 23.98%.
+Row: Age Group is 35-54, Total is 29,972, No-Show Rate is 19.85%.
+Row: Age Group is 55-74, Total is 22,993, No-Show Rate is 15.70%.
+Row: Age Group is 75+, Total is 5,936, No-Show Rate is 16.02%.
+
+18-34 year olds have the highest no-show rate. Patients 55+ are the most reliable segment.
+
+==========
+
+[Source: noshow_findings_report]
+### Finding 4 — SMS Data Quality Issue
+
+Row: SMS Group is SMS Received, Total is 35,482, No-Show Rate is 27.57%.
+Row: SMS Group is No SMS, Total is 75,045, No-Show Rate is 16.70%.
+
+SMS-reminded patients show a counterintuitively higher no-show rate. Investigation revealed all 35,482 SMS records appear logged with a reminder date before the appointment — meaning the SMS field may reflect enrollment status rather than actual reminder delivery. This field cannot be used reliably for predictive modeling without correcting the logging process.
+
+==========
+
+[Source: noshow_findings_report]
+### Finding 5 — Top 5 No-Show Neighbourhoods
+
+Row: Rank is 1, Neighbourhood is SANTOS DUMONT, Total is 1,276, No-Show Rate is 28.92%.
+Row: Rank is 2, Neighbourhood is SANTA CECILIA, Total is 448, No-Show Rate is 27.46%.
+Row: Rank is 3, Neighbourhood is SANTA CLARA, Total is 506, No-Show Rate is 26.48%.
+Row: Rank is 4, Neighbourhood is ITARARE, Total is 3,514, No-Show Rate is 26.27%.
+Row: Rank is 5, Neighbourhood is JESUS DE NAZARETH, Total is 2,853, No-Show Rate is 24.40%.
+
+==========
+
+[Source: noshow_findings_report]
+## Recommendations
+
+1. Same-day confirmation calls for all appointments scheduled 15+ days in advance — this segment has a 32-33% no-show rate and accounts for 27,749 appointments annually
+2. Fix SMS logging — audit whether sms_received reflects actual reminder delivery or program enrollment before using it in any predictive model
+3. Target 18-34 age group with additional outreach — highest no-show rate with the second-highest appointment volume
+4. Pilot neighbourhood-targeted interventions starting with Santos Dumont and Itararé given their combination of high no-show rate and appointment volume
+
+==========
+
+[Source: profile]
+My name is Mike Redding. I'm a 2023 Computer Science graduate from the University of Mary Washington, based in McLean, Virginia.
+
+==========
+
+[Source: profile]
+My career goal is to become a junior AI engineer or prompt engineer at a federal contractor in the DC area. I'm especially interested in RAG systems, prompt design, and testing AI output for accuracy.
+
+==========
+
+[Source: profile]
+I have experience with Python, SQL, Power BI, Tableau, and Excel. I've built portfolio projects analyzing NCAA athletic subsidies, patient no-shows, and employee attrition. I'm currently building AI projects on NextWork.
+
+==========
+
+[Source: profile]
+I'm a U.S. citizen and eligible for a security clearance.

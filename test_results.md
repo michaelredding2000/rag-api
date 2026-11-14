@@ -132,3 +132,101 @@ Next experiments, one at a time, rerunning the same 10 questions each time:
 
 3\. A larger model: qwen2.5:1.5b
 
+
+
+\## Round 3: Tables rewritten as sentences
+
+
+
+Change: the build script converts every markdown table row into a sentence, like "Row: Rank is 1, Neighbourhood is SANTOS DUMONT, Total is 1,276, No-Show Rate is 28.92%."
+
+Model: qwen2.5:0.5b | Chunks retrieved: 3 | Prompt: original NextWork prompt | Temperature: default
+
+
+
+Score: 3 correct, 2 partly correct, 5 wrong (same total as baseline, different questions).
+
+Fixed: questions 3 and 9 (finding the top row of a table).
+
+Got worse: question 6 was correct at baseline, but this time the model did unrequested math and answered 4.53%.
+
+Finding: the default settings add randomness, so the same question can get a different answer each run. That makes it impossible to tell whether a change helped.
+
+
+
+\## Round 3b: Temperature set to 0
+
+
+
+Change: added temperature 0 so the model gives the same answer every run.
+
+Score: 4 correct, 0 partly correct, 6 wrong.
+
+Finding: every correct answer was one or two sentences, and every long answer was wrong. When the model started "analyzing," it invented structure, math, and facts. Question 10 claimed 2,023 students, taken from "2023 Computer Science graduate."
+
+
+
+\## Round 4: Strict prompt
+
+
+
+Change: rules moved into a system message. Answer in one or two sentences, copy numbers exactly, do not calculate, do not explain reasoning, add nothing that is not in the context, and reply "I don't know based on the documents" when the answer is missing.
+
+Model: qwen2.5:0.5b | Temperature: 0 | Chunks retrieved: 3
+
+
+
+| # | Expected | Answer given | Correct |
+
+|---|---|---|---|
+
+| 1 | 63.8% | \~34% | No |
+
+| 2 | 151 of 236 | 151 schools | Yes |
+
+| 3 | SEC, about 4% | Southeastern (SEC) | Yes |
+
+| 4 | About 66% | \~66% | Yes |
+
+| 5 | Knight-Newhouse College Athletics Database | Knight-Newhouse College Athletics Database | Yes |
+
+| 6 | 20.19% | 20.19% | Yes |
+
+| 7 | 4.65% | 4.65% | Yes |
+
+| 8 | 18-34, at 23.98% | Gave the 0-17 row (21.90%) | No |
+
+| 9 | Santos Dumont, at 28.92% | Santos Dumont | Yes |
+
+| 10 | The context does not say | 100 | No |
+
+
+
+Score: 7 correct, 0 partly correct, 3 wrong.
+
+
+
+\## Results so far
+
+
+
+| Round | Change | Correct | Partly | Wrong |
+
+|---|---|---|---|---|
+
+| 2 | Baseline | 3 | 2 | 5 |
+
+| 3 | Tables as sentences | 3 | 2 | 5 |
+
+| 3b | Plus temperature 0 | 4 | 0 | 6 |
+
+| 4 | Plus strict prompt | 7 | 0 | 3 |
+
+
+
+Biggest single improvement: the strict prompt. Forcing short answers stopped the model from inventing math and details.
+
+Still failing: question 1 (picks the FBS row over the median sentence in the same chunk every time), question 8 (picked the first row instead of the highest), question 10 (ignored the "I don't know" rule and made up a number).
+
+Next: test a larger model (qwen2.5:1.5b) with the same setup.
+
