@@ -1,0 +1,210 @@
+[
+  {
+    "number": 1,
+    "question": "What was the median subsidy dependence?",
+    "expected": "63.8%",
+    "answer": "The median school funds 63.8% of its athletic revenue through subsidies.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ],
+    "distances": [
+      0.294,
+      0.326,
+      0.329
+    ]
+  },
+  {
+    "number": 2,
+    "question": "How many schools rely on subsidies for more than half their athletic money?",
+    "expected": "151 of 236",
+    "answer": "151 of 236 schools with reported data rely on subsidies for over half their athletic money.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ],
+    "distances": [
+      0.186,
+      0.191,
+      0.219
+    ]
+  },
+  {
+    "number": 3,
+    "question": "Which conference has the lowest average subsidy dependence?",
+    "expected": "SEC, about 4%",
+    "answer": "The conference with the lowest average subsidy dependence is the Southeastern (SEC), with an average subsidy dependence of ~4%.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ],
+    "distances": [
+      0.238,
+      0.267,
+      0.291
+    ]
+  },
+  {
+    "number": 4,
+    "question": "What is the average subsidy dependence for Mid-American conference schools?",
+    "expected": "About 66%",
+    "answer": "The average subsidy dependence for Mid-American conference schools is ~66%.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ],
+    "distances": [
+      0.181,
+      0.201,
+      0.233
+    ]
+  },
+  {
+    "number": 5,
+    "question": "Where does the NCAA data come from?",
+    "expected": "Knight-Newhouse College Athletics Database, FY2024",
+    "answer": "The NCAA data comes from the Knight-Newhouse College Athletics Database, pulled through its Custom Reporting export.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ],
+    "distances": [
+      0.263,
+      0.264,
+      0.265
+    ]
+  },
+  {
+    "number": 6,
+    "question": "What is the overall no-show rate?",
+    "expected": "20.19%",
+    "answer": "20.19% of all appointments resulted in a no-show.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ],
+    "distances": [
+      0.211,
+      0.288,
+      0.3
+    ]
+  },
+  {
+    "number": 7,
+    "question": "What is the no-show rate for same-day appointments?",
+    "expected": "4.65%",
+    "answer": "4.65%",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ],
+    "distances": [
+      0.193,
+      0.26,
+      0.269
+    ]
+  },
+  {
+    "number": 8,
+    "question": "Which age group has the highest no-show rate?",
+    "expected": "18-34, at 23.98%",
+    "answer": "18-34 year olds have the highest no-show rate.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ],
+    "distances": [
+      0.246,
+      0.279,
+      0.294
+    ]
+  },
+  {
+    "number": 9,
+    "question": "Which neighbourhood has the highest no-show rate?",
+    "expected": "Santos Dumont, at 28.92%",
+    "answer": "SANTO DOMINGO has the highest no-show rate at 28.92%.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ],
+    "distances": [
+      0.246,
+      0.298,
+      0.355
+    ]
+  },
+  {
+    "number": 10,
+    "question": "How many students attend the University of Mary Washington?",
+    "expected": "The context does not say",
+    "answer": "I don't know based on the documents.",
+    "sources": [
+      "profile",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ],
+    "distances": [
+      0.418,
+      0.528,
+      0.537
+    ]
+  },
+  {
+    "number": 11,
+    "question": "What is the capital of France?",
+    "expected": "The context does not say",
+    "answer": "I don't know based on the documents.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "profile"
+    ],
+    "distances": [
+      0.554,
+      0.6,
+      0.606
+    ]
+  },
+  {
+    "number": 12,
+    "question": "What is my favorite food?",
+    "expected": "The context does not say",
+    "answer": "I don't know based on the documents.",
+    "sources": [
+      "profile",
+      "profile",
+      "profile"
+    ],
+    "distances": [
+      0.564,
+      0.575,
+      0.581
+    ]
+  },
+  {
+    "number": 13,
+    "question": "How much does a data analyst earn in Virginia?",
+    "expected": "The context does not say",
+    "answer": "I don't know based on the documents.",
+    "sources": [
+      "profile",
+      "profile",
+      "profile"
+    ],
+    "distances": [
+      0.45,
+      0.467,
+      0.469
+    ]
+  }
+]

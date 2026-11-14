@@ -230,3 +230,179 @@ Still failing: question 1 (picks the FBS row over the median sentence in the sam
 
 Next: test a larger model (qwen2.5:1.5b) with the same setup.
 
+
+
+\## Round 5: Larger model
+
+
+
+Change: switched from qwen2.5:0.5b to qwen2.5:1.5b. Everything else the same as Round 4 (tables as sentences, temperature 0, strict prompt).
+
+
+
+| # | Expected | Answer given | Correct |
+
+|---|---|---|---|
+
+| 1 | 63.8% | 63.8% | Yes |
+
+| 2 | 151 of 236 | 151 of 236 | Yes |
+
+| 3 | SEC, about 4% | SEC, about 4% | Yes |
+
+| 4 | About 66% | About 66% | Yes |
+
+| 5 | Knight-Newhouse College Athletics Database | Knight-Newhouse College Athletics Database | Yes |
+
+| 6 | 20.19% | 20.19% | Yes |
+
+| 7 | 4.65% | 4.65% | Yes |
+
+| 8 | 18-34, at 23.98% | 18-34 | Yes |
+
+| 9 | Santos Dumont, at 28.92% | "Santo Domingo," 28.92% | Partly |
+
+| 10 | The context does not say | 1,200 students | No |
+
+
+
+Score: 8 correct, 1 partly correct, 1 wrong.
+
+
+
+Fixed: question 1 (wrong in every earlier round) and question 8.
+
+New error: question 9 kept the right rate but replaced "Santos Dumont" with "Santo Domingo," a real place the model likely knew from training. A larger model brings more outside knowledge, which can override what the documents say.
+
+Still failing: question 10 has made up an answer in every round, with both models and every prompt. Prompt instructions alone did not stop it.
+
+
+
+\## Results across all rounds
+
+
+
+| Round | Change | Correct | Partly | Wrong |
+
+|---|---|---|---|---|
+
+| 2 | Baseline | 3 | 2 | 5 |
+
+| 3 | Tables as sentences | 3 | 2 | 5 |
+
+| 3b | Plus temperature 0 | 4 | 0 | 6 |
+
+| 4 | Plus strict prompt | 7 | 0 | 3 |
+
+| 5 | Plus larger model | 8 | 1 | 1 |
+
+
+
+Next: a relevance threshold in the code, so the API answers "I don't know" when no retrieved chunk is close enough to the question, instead of relying on the model to admit it.
+
+
+
+\## Round 5b: Measuring retrieval distances
+
+
+
+Change: the API now returns the distance score for each retrieved chunk (lower means a closer match). Added three more out-of-scope questions (11 to 13) so the cutoff is not picked from a single example.
+
+
+
+| Questions | Closest chunk distance |
+
+|---|---|
+
+| Answerable (1 to 9) | 0.181 to 0.294 |
+
+| Not in the documents (10 to 13) | 0.418 to 0.564 |
+
+
+
+Every answerable question fell below 0.294, and every out-of-scope question fell above 0.418. Without a guardrail, the model answered question 10 with a made-up number (1,200 students) and question 11 from its own knowledge ("Paris"), even though neither answer is in the documents.
+
+
+
+\## Round 6: Relevance threshold
+
+
+
+Change: if the closest chunk's distance is above 0.35 (the middle of the gap), the API returns "I don't know based on the documents" without calling the model.
+
+Model: qwen2.5:1.5b | Temperature: 0 | Strict prompt | Tables as sentences
+
+
+
+| # | Question | Answer given | Correct |
+
+|---|---|---|---|
+
+| 1 | Median subsidy dependence | 63.8% | Yes |
+
+| 2 | Schools over half subsidized | 151 of 236 | Yes |
+
+| 3 | Lowest conference | SEC, about 4% | Yes |
+
+| 4 | Mid-American average | About 66% | Yes |
+
+| 5 | NCAA data source | Knight-Newhouse College Athletics Database | Yes |
+
+| 6 | Overall no-show rate | 20.19% | Yes |
+
+| 7 | Same-day no-show rate | 4.65% | Yes |
+
+| 8 | Highest no-show age group | 18-34 | Yes |
+
+| 9 | Highest no-show neighbourhood | "Santo Domingo," 28.92% | Partly |
+
+| 10 | UMW enrollment | I don't know based on the documents | Yes |
+
+| 11 | Capital of France | I don't know based on the documents | Yes |
+
+| 12 | My favorite food | I don't know based on the documents | Yes |
+
+| 13 | Data analyst pay in Virginia | I don't know based on the documents | Yes |
+
+
+
+Score: 12 correct, 1 partly correct out of 13.
+
+Caveat: the 0.35 cutoff was picked from 13 questions. A real system would tune it on a larger and more varied question set.
+
+
+
+\## Final results (original 10 questions)
+
+
+
+| Round | Change | Correct | Partly | Wrong |
+
+|---|---|---|---|---|
+
+| 2 | Baseline | 3 | 2 | 5 |
+
+| 3 | Tables as sentences | 3 | 2 | 5 |
+
+| 3b | Plus temperature 0 | 4 | 0 | 6 |
+
+| 4 | Plus strict prompt | 7 | 0 | 3 |
+
+| 5 | Plus larger model | 8 | 1 | 1 |
+
+| 6 | Plus relevance threshold | 9 | 1 | 0 |
+
+
+
+What made the biggest difference:
+
+1\. The strict prompt (3 to 7 correct between Rounds 3b and 4). Short, quoted answers stopped the invented math and details.
+
+2\. The relevance threshold. Prompt instructions alone never stopped the model from answering questions outside the documents. A check in the code did.
+
+3\. The larger model fixed two answers but introduced a new error, replacing a neighbourhood name with a real place it knew from training.
+
+
+
+Remaining issue: question 9's name substitution. The smaller model got this name right in Round 4, so model size involves a tradeoff between reasoning and faithfulness to the source text.
+

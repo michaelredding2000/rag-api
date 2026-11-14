@@ -1,0 +1,112 @@
+[
+  {
+    "number": 1,
+    "question": "What was the median subsidy dependence?",
+    "expected": "63.8%",
+    "answer": "The median school funds 63.8% of its athletic revenue through subsidies.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 2,
+    "question": "How many schools rely on subsidies for more than half their athletic money?",
+    "expected": "151 of 236",
+    "answer": "151 of 236 schools with reported data rely on subsidies for over half their athletic money.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 3,
+    "question": "Which conference has the lowest average subsidy dependence?",
+    "expected": "SEC, about 4%",
+    "answer": "The conference with the lowest average subsidy dependence is the Southeastern (SEC), with an average subsidy dependence of ~4%.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 4,
+    "question": "What is the average subsidy dependence for Mid-American conference schools?",
+    "expected": "About 66%",
+    "answer": "The average subsidy dependence for Mid-American conference schools is ~66%.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 5,
+    "question": "Where does the NCAA data come from?",
+    "expected": "Knight-Newhouse College Athletics Database, FY2024",
+    "answer": "The NCAA data comes from the Knight-Newhouse College Athletics Database, pulled through its Custom Reporting export.",
+    "sources": [
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  },
+  {
+    "number": 6,
+    "question": "What is the overall no-show rate?",
+    "expected": "20.19%",
+    "answer": "20.19% of all appointments resulted in a no-show.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 7,
+    "question": "What is the no-show rate for same-day appointments?",
+    "expected": "4.65%",
+    "answer": "4.65%",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 8,
+    "question": "Which age group has the highest no-show rate?",
+    "expected": "18-34, at 23.98%",
+    "answer": "18-34 year olds have the highest no-show rate.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 9,
+    "question": "Which neighbourhood has the highest no-show rate?",
+    "expected": "Santos Dumont, at 28.92%",
+    "answer": "SANTO DOMINGO has the highest no-show rate at 28.92%.",
+    "sources": [
+      "noshow_findings_report",
+      "noshow_findings_report",
+      "noshow_findings_report"
+    ]
+  },
+  {
+    "number": 10,
+    "question": "How many students attend the University of Mary Washington?",
+    "expected": "The context does not say",
+    "answer": "The University of Mary Washington has 1,200 students.",
+    "sources": [
+      "profile",
+      "ncaa_subsidy_report",
+      "ncaa_subsidy_report"
+    ]
+  }
+]

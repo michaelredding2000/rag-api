@@ -15,6 +15,10 @@ QUESTIONS = [
     ("Which age group has the highest no-show rate?", "18-34, at 23.98%"),
     ("Which neighbourhood has the highest no-show rate?", "Santos Dumont, at 28.92%"),
     ("How many students attend the University of Mary Washington?", "The context does not say"),
+    # Extra out-of-scope questions, used to pick a fair cutoff
+    ("What is the capital of France?", "The context does not say"),
+    ("What is my favorite food?", "The context does not say"),
+    ("How much does a data analyst earn in Virginia?", "The context does not say"),
 ]
 
 results = []
@@ -28,6 +32,7 @@ for i, (question, expected) in enumerate(QUESTIONS, start=1):
         "expected": expected,
         "answer": data["answer"],
         "sources": data["sources"],
+        "distances": data.get("distances", []),
     })
 
 filename = f"results_{ROUND_NAME}.json"
@@ -36,7 +41,8 @@ with open(filename, "w", encoding="utf-8") as f:
 
 for r in results:
     print(f"\n{r['number']}. {r['question']}")
-    print(f"   Expected: {r['expected']}")
-    print(f"   Answer:   {r['answer']}")
+    print(f"   Expected:  {r['expected']}")
+    print(f"   Answer:    {r['answer']}")
+    print(f"   Distances: {r['distances']}")
 
 print(f"\nSaved to {filename}")
