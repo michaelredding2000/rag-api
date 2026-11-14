@@ -1,0 +1,7 @@
+My name is Mike Redding. I'm a 2023 Computer Science graduate from the University of Mary Washington, based in McLean, Virginia.
+
+My career goal is to become a junior AI engineer or prompt engineer at a federal contractor in the DC area. I'm especially interested in RAG systems, prompt design, and testing AI output for accuracy.
+
+I have experience with Python, SQL, Power BI, Tableau, and Excel. I've built portfolio projects analyzing NCAA athletic subsidies, patient no-shows, and employee attrition. I'm currently building AI projects on NextWork.
+
+I'm a U.S. citizen and eligible for a security clearance.
