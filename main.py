@@ -5,9 +5,8 @@ from chromadb.utils.embedding_functions.ollama_embedding_function import (
     OllamaEmbeddingFunction,
 )
 
-app = FastAPI()  # Create the FastAPI application
+app = FastAPI()
 
-# Connect to the same ChromaDB collection you built in Step 2
 client = chromadb.PersistentClient(path="./chroma_db")
 
 ef = OllamaEmbeddingFunction(
@@ -16,22 +15,18 @@ ef = OllamaEmbeddingFunction(
 )
 
 collection = client.get_or_create_collection(
-    name="personal_profile",
+    name="knowledge_base",
     embedding_function=ef,
 )
 
 
-@app.get("/ask")  # This creates a GET endpoint at /ask
-def ask(question: str):  # FastAPI automatically reads "question" from the URL query string
-    # Step 1: RETRIEVE - search ChromaDB for the 2 most relevant chunks
-    results = collection.query(
-        query_texts=[question],  # ChromaDB converts this to a vector and finds similar chunks
-        n_results=2,  # Return the top 2 matches
-    )
-    # Combine the matching chunks into a single string
+@app.get("/ask")
+def ask(question: str):
+    # RETRIEVE the 3 most relevant chunks
+    results = collection.query(query_texts=[question], n_results=3)
     context = "\n\n".join(results["documents"][0])
 
-    # Step 2: AUGMENT - build a prompt that includes the retrieved context
+    # AUGMENT the prompt with the retrieved context
     augmented_prompt = f"""Use the following context to answer the question.
 If the context doesn't contain relevant information, say so.
 
@@ -40,15 +35,15 @@ Context:
 
 Question: {question}"""
 
-    # Step 3: GENERATE - send the augmented prompt to the local LLM
+    # GENERATE the answer with the local model
     response = ollama.chat(
         model="qwen2.5:0.5b",
         messages=[{"role": "user", "content": augmented_prompt}],
     )
 
-    # Return the answer along with the context so users can verify the source
     return {
         "question": question,
         "answer": response["message"]["content"],
+        "sources": [m["source"] for m in results["metadatas"][0]],
         "context_used": results["documents"][0],
     }
